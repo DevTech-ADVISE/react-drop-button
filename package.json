@@ -2,6 +2,7 @@
   "name": "react-drop-button",
   "version": "0.1.0",
   "description": "react-drop-button",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "./node_modules/.bin/jsxhint lib/ spec/ && ./node_modules/.bin/jshint lib/ spec/ && ./node_modules/karma/bin/karma start karma.conf.js",
     "watch-test": "./node_modules/karma/bin/karma start karma.conf.js --auto-watch --no-single-run",
