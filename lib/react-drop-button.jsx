@@ -48,7 +48,7 @@ var DropButton = React.createClass({
 		}
 		
 		if(this.state.open) {
-			dropBox = (<div ref={"dropBox"} className={dropBoxClassName}>{dropBoxContent}</div>);
+			dropBox = (<div ref={"dropBox"} className={dropBoxClassName}>{dropBoxContent || this.props.children}</div>);
 			buttonStatus = "open";
 		}
 
