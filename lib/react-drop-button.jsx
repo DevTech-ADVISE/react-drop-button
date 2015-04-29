@@ -8,8 +8,7 @@ module.exports ={};
 
 var DropButton = React.createClass({
   props: {
-		label: React.PropTypes.string.isRequired,
-		customMode: React.PropTypes.bool
+		label: React.PropTypes.string.isRequired
 	},
 	getInitialState: function() {
 		return {open: false};
@@ -24,38 +23,41 @@ var DropButton = React.createClass({
 	},
 	getChildElementByType: function(type) {
 		var children = this.props.children;
-		return children.filter(function(childElement) {return childElement.type.displayName === type;})
+		return children.filter(function(childElement) {return childElement.type.displayName === type;});
 	},
 	toggleDropBox: function() {
 		this.setState({open: !this.state.open});
+	},
+	alert1: function() {
+		alert("1");
 	},
 	handleOutsideClick: function(event) {
 		var dropBoxDOM = this.refs.dropBox && this.refs.dropBox.getDOMNode();
 		var buttonDOM = this.refs.button.getDOMNode();
 		//if the click was within the dropdown box panel dont close it
-		if( (dropBoxDOM && dropBoxDOM.contains(event.target)) || (buttonDOM && buttonDOM == event.target) || !this.state.open)
+		if( (dropBoxDOM && dropBoxDOM.contains(event.target)) || (buttonDOM && buttonDOM.contains(event.target)) || !this.state.open)
 			return;
-		this.setState({open: false});
+		//close the box
+		this.toggleDropBox();
 	},
 	render: function() {
 		var dropBox = '', buttonStatus = "closed";
 		var dropBoxContent = null;
 		
 		var dropTrigger = null;
-		if(this.props.customMode) {
-			dropBoxContent = this.getChildElementByType("DropBoxContent");
-			dropTrigger = this.getChildElementByType("DropTrigger");
-		}
+		dropBoxContent = this.getChildElementByType("DropBoxContent");
+		dropTrigger = this.getChildElementByType("DropTrigger");
 		
 		if(this.state.open) {
-			dropBox = (<div ref={"dropBox"} className={dropBoxClassName}>{dropBoxContent || this.props.children}</div>);
+			dropBox = (<div ref={"dropBox"} className={dropBoxClassName}>{dropBoxContent}</div>);
 			buttonStatus = "open";
 		}
 
 		return (
 			<div className="react-drop-button">
-				<div ref={"button"} className={buttonStatus + " rdd-button"} onClick={this.toggleDropBox}>{this.props.label}
+				<div ref={"button"} className={buttonStatus + " rdd-button"} onClick={this.toggleDropBox}>
 					{dropTrigger}
+					
 				</div>
 				{dropBox}
 			</div>
