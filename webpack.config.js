@@ -1,35 +1,20 @@
-/* jshint node: true */
+//config for webpack build
 var path = require('path');
-
+var webpack = require('webpack');
 
 module.exports = {
-  context: path.join(__dirname),
-  entry: './lib/index.js',
+    entry: "./index.js",
+    output: {
+        path: __dirname,
+        filename: "bundle.js"
+    },
+    devtool: 'source-map',
+    module: {
+        loaders: [
+            { test: /\.jsx?$/, loader: "jsx-loader?harmony" },
+            { test: /\.css$/, loader: "style!css" },
+            { test: /\.scss$/, loader: "style!css!sass"}
+        ]
+    },
 
-  output: {
-    path: path.join(__dirname),
-    filename: 'react-drop-button.js',
-    libraryTarget: 'umd',
-    library: 'ReactDropButton'
-  },
-
-  externals: {
-   'react': 'var React'
-  },
-
-  module: {
-    loaders: [
-      {
-        test: /\.scss$/,
-        // Query parameters are passed to node-sass
-        loader: 'style!css!sass?outputStyle=expanded&' +
-          'includePaths[]=' + (path.resolve(__dirname, './bower_components')) + '&' +
-          'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
-      },
-      {
-        test: /\.jsx$/,
-        loader: 'jsx-loader?harmony'
-      }
-    ]
-  }
 };
