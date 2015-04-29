@@ -1,2 +1,41 @@
 .react-drop-button {
+
+
+	.rdd-button {
+		width: 180px;
+		border-radius: 3px;
+		padding: 3px;
+		&.closed {
+			background: #B8B8B8;
+			&:hover {
+				background: #ccc;
+			}
+		}
+
+		&.open {
+			background: #ccc;
+			&:hover {
+				background: #ccc;
+			}
+		}
+
+		span.bold-text {
+			color: grey;
+		}
+
+		div.chevron {
+		
+    		transform: rotate(9deg);
+			color: blue;
+			display:block;
+		}
+	}
+
+	.rdd-drop-box {
+		width: 200px;
+		border: 1px solid grey;
+		border-radius: 2px;
+		background: #F5F5F5;
+	}
+
 }
