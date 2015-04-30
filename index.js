@@ -6,8 +6,8 @@ var DropBoxContent = ReactDropButton.DropBoxContent;
 
 React.render(
 	<div>
-		<DropButton customMode="true">
-			<DropTrigger>Custom<span className="bold-text"> button content</span><div className="chevron">{" >"}</div></DropTrigger>
+		<DropButton label="hihi">
+			<DropTrigger >Custom<span className="bold-text"> button content</span><div className="chevron">{" >"}</div></DropTrigger>
 			<DropBoxContent>
 
 				<ul>Custom drop down content
