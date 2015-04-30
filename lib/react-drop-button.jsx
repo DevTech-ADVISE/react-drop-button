@@ -1,7 +1,7 @@
 var React = require("react/addons");
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-var dropBoxClassName = 'rdd-drop-box';
+var dropBoxClassName = 'rdb-drop-box';
 
 require("./react-drop-button.scss");
 
@@ -60,7 +60,7 @@ var DropButton = React.createClass({
 
 		return (
 			<div className="react-drop-button">
-				<div ref={"button"} className={buttonStatus + " rdd-button"} onClick={this.toggleDropBox}>
+				<div ref={"button"} className={buttonStatus + " rdb-button"} onClick={this.toggleDropBox}>
 					{dropTrigger}
 					
 				</div>
