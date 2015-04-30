@@ -46,7 +46,7 @@
 		transition: transform .2s cubic-bezier(.55, 0, .1, 1);
 
 		&.drop-box-transition-enter-active {
-			transform: scale(1);
+			transform: scale(1.01);
 		}
 	}
 
