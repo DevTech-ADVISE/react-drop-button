@@ -33,9 +33,48 @@
 
 	.rdd-drop-box {
 		width: 200px;
+		height: 200px;
 		border: 1px solid grey;
 		border-radius: 2px;
 		background: #F5F5F5;
+
+		
+	}
+
+	.drop-box-transition-enter {
+		  //opacity: 0.01;
+		  height: 1px;
+		  transition: height .2s ease-in;
+		  .drop-box-content {
+				opacity: 0.01;
+				transition: opacity .5s ease-in;
+		  }
+		}
+
+	.drop-box-transition-enter.drop-box-transition-enter-active {
+	  //opacity: 1;
+	  height: 200px;
+	    .drop-box-content {
+			opacity: 1;
+		 }
+	}
+
+	.drop-box-transition-leave {
+		//opacity: 1;
+		height: 200px;
+		transition: height .2s ease-in;
+		.drop-box-content {
+			opacity: 1;
+			transition: opacity .2s ease-in;
+		}
+	}
+
+	.drop-box-transition-leave.drop-box-transition-leave-active {
+		//opacity: 0.01;
+		height: 1px;
+		.drop-box-content {
+			opacity: 0.01;
+		}
 	}
 
 }

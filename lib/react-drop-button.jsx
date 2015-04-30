@@ -1,4 +1,5 @@
-var React = require("react");
+var React = require("react/addons");
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var dropBoxClassName = 'rdd-drop-box';
 
@@ -49,7 +50,11 @@ var DropButton = React.createClass({
 		dropTrigger = this.getChildElementByType("DropTrigger");
 		
 		if(this.state.open) {
-			dropBox = (<div ref={"dropBox"} className={dropBoxClassName}>{dropBoxContent}</div>);
+			dropBox = (
+				<div ref={"dropBox"} className={dropBoxClassName}  key="drop-box">
+					{dropBoxContent}
+				</div>
+			);
 			buttonStatus = "open";
 		}
 
@@ -59,7 +64,9 @@ var DropButton = React.createClass({
 					{dropTrigger}
 					
 				</div>
+				<ReactCSSTransitionGroup transitionName="drop-box-transition">
 				{dropBox}
+				</ReactCSSTransitionGroup>
 			</div>
 		);
 	}
