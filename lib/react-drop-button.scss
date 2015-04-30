@@ -1,7 +1,7 @@
 .react-drop-button {
 
 
-	.rdd-button {
+	.rdb-button {
 		width: 180px;
 		border-radius: 3px;
 		padding: 3px;
@@ -31,7 +31,7 @@
 		}
 	}
 
-	.rdd-drop-box {
+	.rdb-drop-box {
 		width: 200px;
 		height: 200px;
 		border: 1px solid grey;
@@ -39,6 +39,10 @@
 		background: #F5F5F5;
 		transform: scale(1);
 		transform-origin: 10px 0;
+
+		position: absolute;
+		z-index: 100;
+	
 	}
 
 	.drop-box-transition-enter {
