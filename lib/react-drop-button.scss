@@ -18,12 +18,11 @@ $btn-border-darken: darken($btn-border, 4%);
 }
 
 
-
 .react-drop-button {
 	position: relative;
 	display: inline-block;
 
-	.rdd-button {
+	.rdb-button {
 		@extend .font;
 		@extend .user-select;
 		background-color: $btn-color;
@@ -81,7 +80,7 @@ $btn-border-darken: darken($btn-border, 4%);
 		}
 	}
 
-	.rdd-drop-box {
+	.rdb-drop-box {
 		border: 1px solid #ccc;
 		border-radius: 1px 1px 3px 3px;
 		background: #F5F5F5;
