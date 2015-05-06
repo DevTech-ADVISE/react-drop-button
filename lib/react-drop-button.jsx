@@ -1,18 +1,24 @@
 var React = require("react/addons");
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-var dropBoxClassName = 'rdb-drop-box';
+var LEFT_ALIGN = "";
+var BOTTOM_ALIGN = "bottom-align-content";
+var RIGHT_ALIGN = "right-align-content";
 
 require("./react-drop-button.scss");
 
 module.exports ={};
 
 var DropButton = React.createClass({
-  props: {
-		label: React.PropTypes.string.isRequired
+  propsTypes: {
+		label: React.PropTypes.string.isRequired,
+		layoutMode: React.PropTypes.string
 	},
 	getInitialState: function() {
 		return {open: false};
+	},
+	getDefaultProps: function() {
+		return {layoutMode: LEFT_ALIGN};
 	},
 	componentWillMount: function() {
 		//bubble events up to the top
@@ -42,13 +48,14 @@ var DropButton = React.createClass({
 		this.toggleDropBox();
 	},
 	render: function() {
+		var dropBoxClassName = 'rdb-drop-box' + " " + this.props.layoutMode;
 		var dropBox = '', buttonStatus = "closed";
 		var dropBoxContent = null;
 		
 		var dropTrigger = null;
 		dropBoxContent = this.getChildElementByType("DropBoxContent");
 		dropTrigger = this.getChildElementByType("DropTrigger");
-		
+
 		if(this.state.open) {
 			dropBox = (
 				<div ref={"dropBox"} className={dropBoxClassName}  key="drop-box">
@@ -95,5 +102,5 @@ var DropBoxContent = React.createClass({
 module.exports.DropButton = DropButton;
 module.exports.DropTrigger = DropTrigger;
 module.exports.DropBoxContent = DropBoxContent;
-
-
+module.exports.BOTTOM_ALIGN = BOTTOM_ALIGN;
+module.exports.RIGHT_ALIGN = RIGHT_ALIGN;
