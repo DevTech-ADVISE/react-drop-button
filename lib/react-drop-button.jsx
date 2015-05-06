@@ -18,7 +18,7 @@ var DropButton = React.createClass({
 		return {open: false};
 	},
 	getDefaultProps: function() {
-		return {layoutMode: LEFT_ALIGN}
+		return {layoutMode: LEFT_ALIGN};
 	},
 	componentWillMount: function() {
 		//bubble events up to the top
