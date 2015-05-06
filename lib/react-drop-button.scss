@@ -113,26 +113,26 @@ $btn-border-darken: darken($btn-border, 4%);
 	}
 
 	
-	//the following classes can be used to work with the .rdd-drop-box layout
+	//the following classes can be used to work with the .rdb-drop-box layout
 	&.right-align-content { //use this class when content overflows x bounds
-		.rdd-drop-box {
+		.rdb-drop-box {
 			transform-origin: 96% 0;
 			right:0;
 		}
 		//div.chevron {transform: rotate(180deg);} //issue with rotate(180deg), might be best to replace > with < character
-		.rdd-button.open div.chevron {transform: rotate(90deg);}
+		.rdb-button.open div.chevron {transform: rotate(90deg);}
 	}
 	&.bottom-align-content { //use this class when content overflows y bounds
-		.rdd-drop-box {
+		.rdb-drop-box {
 			transform-origin: 4% 98%;
 			bottom: 100%;
 			border-radius: 3px 3px 1px 1px;
 			margin-bottom:-1px;
 		}
-		.rdd-button.open div.chevron {transform: rotate(270deg);}
+		.rdb-button.open div.chevron {transform: rotate(270deg);}
 
 		&.right-align-content { //use both bottom and right when content both overflows x and y bounds
-			.rdd-drop-box {
+			.rdb-drop-box {
 				transform-origin: 98% 98%;
 				border-radius: 3px 3px 1px 1px;
 				right: 0;
@@ -141,30 +141,28 @@ $btn-border-darken: darken($btn-border, 4%);
 	}
 }
 
-
-
 /*EXAMPLE markup to show use cases for reactive content boxes*/
 .bottom-illustration .react-drop-button {
 	bottom: 2vh;
 	position: absolute;
 
-	.rdd-drop-box {
+	.rdb-drop-box {
 		transform-origin: 4% 98%;
 		bottom: 100%;
 		min-width: 210px;
 		border-radius: 3px 3px 1px 1px;
 		margin-bottom:-1px;
 	}
-	.rdd-button.open div.chevron {transform: rotate(270deg) !important;}
+	.rdb-button.open div.chevron {transform: rotate(270deg) !important;}
 }
-.side-illustration .react-drop-button {
+.right-illustration .react-drop-button {
 	position:absolute;
 	right:1vw;
 
-	.rdd-drop-box {
+	.rdb-drop-box {
 		transform-origin: 96% 0;
 		right:0;
 	}
 	//div.chevron {transform: rotate(180deg);} //issue with rotate(180deg), might be best to replace > with < character
-	.rdd-button.open div.chevron {transform: rotate(90deg);}
+	.rdb-button.open div.chevron {transform: rotate(90deg);}
 }
