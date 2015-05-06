@@ -145,24 +145,8 @@ $btn-border-darken: darken($btn-border, 4%);
 .bottom-illustration .react-drop-button {
 	bottom: 2vh;
 	position: absolute;
-
-	.rdb-drop-box {
-		transform-origin: 4% 98%;
-		bottom: 100%;
-		min-width: 210px;
-		border-radius: 3px 3px 1px 1px;
-		margin-bottom:-1px;
-	}
-	.rdb-button.open div.chevron {transform: rotate(270deg) !important;}
 }
 .right-illustration .react-drop-button {
 	position:absolute;
 	right:1vw;
-
-	.rdb-drop-box {
-		transform-origin: 96% 0;
-		right:0;
-	}
-	//div.chevron {transform: rotate(180deg);} //issue with rotate(180deg), might be best to replace > with < character
-	.rdb-button.open div.chevron {transform: rotate(90deg);}
 }

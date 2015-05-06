@@ -48,7 +48,7 @@ var DropButton = React.createClass({
 		this.toggleDropBox();
 	},
 	render: function() {
-		var dropBoxClassName = 'rdb-drop-box' + " " + this.props.layoutMode;
+		var dropBoxClassName = 'rdb-drop-box';
 		var dropBox = '', buttonStatus = "closed";
 		var dropBoxContent = null;
 		
@@ -66,7 +66,7 @@ var DropButton = React.createClass({
 		}
 
 		return (
-			<div className="react-drop-button">
+			<div className={"react-drop-button" + " " + this.props.layoutMode}>
 				<div ref={"button"} className={buttonStatus + " rdb-button"} onClick={this.toggleDropBox}>
 					{dropTrigger}
 					
