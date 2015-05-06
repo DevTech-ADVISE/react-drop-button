@@ -144,7 +144,7 @@ $btn-border-darken: darken($btn-border, 4%);
 
 
 /*EXAMPLE markup to show use cases for reactive content boxes*/
-.react-drop-button:first-child {
+.bottom-illustration .react-drop-button {
 	bottom: 2vh;
 	position: absolute;
 
@@ -157,7 +157,7 @@ $btn-border-darken: darken($btn-border, 4%);
 	}
 	.rdd-button.open div.chevron {transform: rotate(270deg) !important;}
 }
-.react-drop-button:first-child + .react-drop-button {
+.side-illustration .react-drop-button {
 	position:absolute;
 	right:1vw;
 
