@@ -1,14 +1,13 @@
 var React = require('react/addons');
-var ReactDropButton = require('./lib/react-drop-button.jsx');
-var DropButton = ReactDropButton.DropButton;
-var DropTrigger = ReactDropButton.DropTrigger;
-var DropBoxContent = ReactDropButton.DropBoxContent;
+var DropButton = require('./lib/react-drop-button.jsx');
+var DropTrigger = DropButton.DropTrigger;
+var DropBoxContent = DropButton.DropBoxContent;
 
 React.render(
 	<div>
 
 		<div className="bottom-illustration">
-			<DropButton label="hihi_bottom" layoutMode={ReactDropButton.BOTTOM_ALIGN}>
+			<DropButton label="hihi_bottom" layoutMode={DropButton.BOTTOM_ALIGN}>
 				<DropTrigger ><div className="chevron">{" >"}</div> Hello from Below</DropTrigger>
 				<DropBoxContent>
 					When content is placed at the bottom of the page it would be nice to sense with Javascript.  This .rdd-drop-box has a min-width of 210px.
