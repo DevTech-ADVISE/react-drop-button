@@ -7,10 +7,35 @@ var RIGHT_ALIGN = "right-align-content";
 
 require("./react-drop-button.scss");
 
-module.exports ={};
+var DropTrigger = React.createClass({
+	render: function() {
+		return (
+			<div className="drop-trigger">
+				{this.props.children}
+			</div>
+		);
+	}
+});
+
+var DropBoxContent = React.createClass({
+	render: function() {
+		return (
+			<div className="drop-box-content">
+				{this.props.children}
+			</div>
+		);
+	}
+})
 
 var DropButton = React.createClass({
-  propsTypes: {
+	statics: {
+		DropTrigger: DropTrigger,
+		DropBoxContent: DropBoxContent,
+		LEFT_ALIGN: LEFT_ALIGN,
+		BOTTOM_ALIGN: BOTTOM_ALIGN,
+		RIGHT_ALIGN: RIGHT_ALIGN
+	},
+	propsTypes: {
 		label: React.PropTypes.string.isRequired,
 		layoutMode: React.PropTypes.string
 	},
@@ -79,28 +104,4 @@ var DropButton = React.createClass({
 	}
 });
 
-var DropTrigger = React.createClass({
-	render: function() {
-		return (
-			<div className="drop-trigger">
-				{this.props.children}
-			</div>
-		);
-	}
-});
-
-var DropBoxContent = React.createClass({
-	render: function() {
-		return (
-			<div className="drop-box-content">
-				{this.props.children}
-			</div>
-		);
-	}
-})
-
-module.exports.DropButton = DropButton;
-module.exports.DropTrigger = DropTrigger;
-module.exports.DropBoxContent = DropBoxContent;
-module.exports.BOTTOM_ALIGN = BOTTOM_ALIGN;
-module.exports.RIGHT_ALIGN = RIGHT_ALIGN;
+module.exports = DropButton;
