@@ -1,9 +1,10 @@
 var React = require("react/addons");
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-var LEFT_ALIGN = "";
-var BOTTOM_ALIGN = "bottom-align-content";
-var RIGHT_ALIGN = "right-align-content";
+var ALIGN_CONTENT_SE = "";
+var ALIGN_CONTENT_NE = "align-content-ne";
+var ALIGN_CONTENT_SW = "align-content-sw";
+var ALIGN_CONTENT_NW = "align-content-nw";
 
 require("./react-drop-button.scss");
 
@@ -31,9 +32,10 @@ var DropButton = React.createClass({
 	statics: {
 		DropTrigger: DropTrigger,
 		DropBoxContent: DropBoxContent,
-		LEFT_ALIGN: LEFT_ALIGN,
-		BOTTOM_ALIGN: BOTTOM_ALIGN,
-		RIGHT_ALIGN: RIGHT_ALIGN
+		ALIGN_CONTENT_SE: ALIGN_CONTENT_SE,
+		ALIGN_CONTENT_NE: ALIGN_CONTENT_NE,
+		ALIGN_CONTENT_SW: ALIGN_CONTENT_SW,
+		ALIGN_CONTENT_NW: ALIGN_CONTENT_NW
 	},
 	propsTypes: {
 		label: React.PropTypes.string.isRequired,
@@ -43,7 +45,7 @@ var DropButton = React.createClass({
 		return {open: false};
 	},
 	getDefaultProps: function() {
-		return {layoutMode: LEFT_ALIGN};
+		return {layoutMode: ALIGN_CONTENT_SE};
 	},
 	componentWillMount: function() {
 		//bubble events up to the top

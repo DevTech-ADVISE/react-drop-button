@@ -114,15 +114,15 @@ $btn-border-darken: darken($btn-border, 4%);
 
 	
 	//the following classes can be used to work with the .rdb-drop-box layout
-	&.right-align-content { //use this class when content overflows x bounds
+	//by default the content should appear SE
+	&.align-content-sw {
 		.rdb-drop-box {
 			transform-origin: 96% 0;
 			right:0;
 		}
-		//div.chevron {transform: rotate(180deg);} //issue with rotate(180deg), might be best to replace > with < character
-		.rdb-button.open div.chevron {transform: rotate(90deg);}
+		.rdb-button.open div.chevron {transform: rotate(-90deg);} //when W is used text should be updated to < (rather than >)
 	}
-	&.bottom-align-content { //use this class when content overflows y bounds
+	&.align-content-ne {
 		.rdb-drop-box {
 			transform-origin: 4% 98%;
 			bottom: 100%;
@@ -130,14 +130,16 @@ $btn-border-darken: darken($btn-border, 4%);
 			margin-bottom:-1px;
 		}
 		.rdb-button.open div.chevron {transform: rotate(270deg);}
-
-		&.right-align-content { //use both bottom and right when content both overflows x and y bounds
-			.rdb-drop-box {
-				transform-origin: 98% 98%;
-				border-radius: 3px 3px 1px 1px;
-				right: 0;
-			}
+	}
+	&.align-content-nw {
+		.rdb-drop-box {
+			transform-origin: 98% 98%;
+			bottom: 100%;
+			border-radius: 3px 3px 1px 1px;
+			margin-bottom:-1px;
+			right: 0;
 		}
+		.rdb-button.open div.chevron {transform: rotate(90deg);} //when W is used text should be updated to < (rather than >)
 	}
 }
 
@@ -149,4 +151,9 @@ $btn-border-darken: darken($btn-border, 4%);
 .right-illustration .react-drop-button {
 	position:absolute;
 	right:1vw;
+}
+.bottomright-illustration .react-drop-button {
+	position:absolute;
+	right: 1vw;
+	bottom:2vh;
 }
