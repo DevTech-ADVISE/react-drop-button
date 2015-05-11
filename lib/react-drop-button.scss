@@ -1,0 +1,159 @@
+/* variables */
+$btn-color: #efefef;
+$btn-color-darken: darken($btn-color, 2%);
+$btn-border: #d0d0d0;
+$btn-border-darken: darken($btn-border, 4%);
+
+/* @extends */
+.font {font-family: Arial, Helvetica, sans-serif;}
+.font-monospace {font-family: monospace;}
+.user-select {
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+
+	/* No support for these yet, use at own risk */
+	-o-user-select: none;
+	user-select: none;
+}
+
+
+.react-drop-button {
+	position: relative;
+	display: inline-block;
+
+	.rdb-button {
+		@extend .font;
+		@extend .user-select;
+		background-color: $btn-color;
+		border:1px solid $btn-border;
+		border-radius: 3px;
+		padding: .4em;
+		line-height: 1.2em;
+		display:inline-block;
+		position: relative;
+		z-index: 100002;
+		
+		&:hover,
+		&:focus {
+			background-color: $btn-color-darken;
+			border-color: $btn-border-darken;
+		}
+
+		&:active {
+			background-color: $btn-color-darken;
+			border-color: $btn-border-darken;
+			box-shadow: inset 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+		}
+
+		.drop-trigger {
+			background-color:transparent;
+			box-shadow:none;
+		}
+		
+		span.bold-text {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+
+		div.chevron {
+			@extend .font-monospace;
+    		transform: rotate(0deg);
+    		transform-origin: 50% 50%;
+			color: #000;
+			display: block;
+			float: left;
+			line-height: .7em;
+			font-weight: bold;
+			font-size: 1.4em;
+			padding: 3px;
+		}
+
+		&.open {
+			background-color: $btn-color-darken;
+			border-color: $btn-border-darken;
+			box-shadow: inset 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+
+			div.chevron {
+				transform: rotate(90deg);
+			}
+		}
+	}
+
+	.rdb-drop-box {
+		border: 1px solid #ccc;
+		border-radius: 1px 1px 3px 3px;
+		background: #F5F5F5;
+		transform: scale(1);
+		transform-origin: 10px 1px;
+		display: block;
+		position: absolute;
+		z-index: 100001;
+		padding: .4em;
+		box-shadow: 2px 2px 4px rgba(120,120,120,.25);
+		min-width: 160px;
+	}
+
+	.drop-box-transition-enter {
+		transform: scale(0);
+		transition: transform .2s cubic-bezier(.55, 0, .1, 1);
+
+		&.drop-box-transition-enter-active {
+			transform: scale(1.01);
+		}
+	}
+
+	.drop-box-transition-leave {
+		transform: scale(1);
+		transition: transform .2s cubic-bezier(.55, 0, .1, 1);
+
+		&.drop-box-transition-leave-active {
+			transform: scale(0);
+		}
+	}
+
+	
+	//the following classes can be used to work with the .rdb-drop-box layout
+	//by default the content should appear SE
+	&.align-content-sw {
+		.rdb-drop-box {
+			transform-origin: 96% 0;
+			right:0;
+		}
+		.rdb-button.open div.chevron {transform: rotate(-90deg);} //when W is used text should be updated to < (rather than >)
+	}
+	&.align-content-ne {
+		.rdb-drop-box {
+			transform-origin: 4% 98%;
+			bottom: 100%;
+			border-radius: 3px 3px 1px 1px;
+			margin-bottom:-1px;
+		}
+		.rdb-button.open div.chevron {transform: rotate(270deg);}
+	}
+	&.align-content-nw {
+		.rdb-drop-box {
+			transform-origin: 98% 98%;
+			bottom: 100%;
+			border-radius: 3px 3px 1px 1px;
+			margin-bottom:-1px;
+			right: 0;
+		}
+		.rdb-button.open div.chevron {transform: rotate(90deg);} //when W is used text should be updated to < (rather than >)
+	}
+}
+
+/*EXAMPLE markup to show use cases for reactive content boxes*/
+.bottom-illustration .react-drop-button {
+	bottom: 2vh;
+	position: absolute;
+}
+.right-illustration .react-drop-button {
+	position:absolute;
+	right:1vw;
+}
+.bottomright-illustration .react-drop-button {
+	position:absolute;
+	right: 1vw;
+	bottom:2vh;
+}
