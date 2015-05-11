@@ -48,17 +48,8 @@ var DropBoxContent = DropButton.DropBoxContent;
 React.render(
     &lt;div&gt;
 
-        &lt;div className="bottom-illustration"&gt;
-            &lt;DropButton label="hihi_bottom" layoutMode={DropButton.ALIGN_CONTENT_NE}&gt;
-                &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{" &gt;"}&lt;/div&gt; Hello from Below&lt;/DropTrigger&gt;
-                &lt;DropBoxContent&gt;
-                    When content is placed at the bottom of the page it would be nice to sense with Javascript.  This .rdd-drop-box has a min-width of 210px.
-                &lt;/DropBoxContent&gt;
-            &lt;/DropButton&gt;
-        &lt;/div&gt;
-
         &lt;div className="right-illustration"&gt;
-            &lt;DropButton label="hihi_right" layoutMode={DropButton.ALIGN_CONTENT_SW}&gt;
+            &lt;DropButton layoutMode={DropButton.ALIGN_CONTENT_SW}&gt;
                 &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{"&lt; "}&lt;/div&gt; HI&lt;/DropTrigger&gt;
                 &lt;DropBoxContent&gt;
                     When content is on the edge of the page it would be nice to sense with Javascript.
@@ -67,7 +58,7 @@ React.render(
         &lt;/div&gt;
 
         &lt;div className="bottomright-illustration"&gt;
-            &lt;DropButton label="hihi_right" layoutMode={DropButton.ALIGN_CONTENT_NW}&gt;
+            &lt;DropButton layoutMode={DropButton.ALIGN_CONTENT_NW}&gt;
                 &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{"&lt; "}&lt;/div&gt; HI&lt;/DropTrigger&gt;
                 &lt;DropBoxContent&gt;
                     When content is on the edge of the page it would be nice to sense with Javascript.
@@ -75,13 +66,13 @@ React.render(
             &lt;/DropButton&gt;
         &lt;/div&gt;
 
-        &lt;DropButton label="hihi"&gt;
+        &lt;DropButton&gt;
             &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{" &gt;"}&lt;/div&gt; Custom&lt;span className="bold-text"&gt; button content&lt;/span&gt;&lt;/DropTrigger&gt;
             &lt;DropBoxContent&gt;
                 Custom drop down content with a 160px min-width
                 &lt;ul&gt;
-                    &lt;li&gt;whatev1&lt;/li&gt;
-                    &lt;li&gt;whatev2&lt;/li&gt;
+                    &lt;li&gt;list item 1&lt;/li&gt;
+                    &lt;li&gt;list item 2&lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/DropBoxContent&gt;
         &lt;/DropButton&gt;

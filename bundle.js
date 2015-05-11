@@ -54,8 +54,8 @@
 	
 	
 			React.createElement("div", {className: "right-illustration"}, 
-				React.createElement(DropButton, {label: "hihi_right", layoutMode: DropButton.ALIGN_CONTENT_SW}, 
-					React.createElement(DropTrigger, null, React.createElement("div", {className: "chevron"}, "< "), " HI"), 
+				React.createElement(DropButton, {layoutMode: DropButton.ALIGN_CONTENT_SW}, 
+					React.createElement(DropTrigger, null, React.createElement("div", {className: "chevron"}, "< "), " South West"), 
 					React.createElement(DropBoxContent, null, 
 						"When content is on the edge of the page it would be nice to sense with Javascript."
 					)
@@ -63,21 +63,21 @@
 			), 
 	
 			React.createElement("div", {className: "bottomright-illustration"}, 
-				React.createElement(DropButton, {label: "hihi_right", layoutMode: DropButton.ALIGN_CONTENT_NW}, 
-					React.createElement(DropTrigger, null, React.createElement("div", {className: "chevron"}, "< "), " HI"), 
+				React.createElement(DropButton, {layoutMode: DropButton.ALIGN_CONTENT_NW}, 
+					React.createElement(DropTrigger, null, React.createElement("div", {className: "chevron"}, "< "), " North West"), 
 					React.createElement(DropBoxContent, null, 
 						"When content is on the edge of the page it would be nice to sense with Javascript."
 					)
 				)
 			), 
 	
-			React.createElement(DropButton, {label: "hihi"}, 
+			React.createElement(DropButton, null, 
 				React.createElement(DropTrigger, null, React.createElement("div", {className: "chevron"}, " >"), " Custom", React.createElement("span", {className: "bold-text"}, " button content")), 
 				React.createElement(DropBoxContent, null, 
 					"Custom drop down content with a 160px min-width", 
 					React.createElement("ul", null, 
-						React.createElement("li", null, "whatev1"), 
-						React.createElement("li", null, "whatev2")
+						React.createElement("li", null, "list item 1"), 
+						React.createElement("li", null, "list item 2")
 					)
 				)
 			)
@@ -7090,9 +7090,9 @@
 	var ReactInstanceHandles = __webpack_require__(34);
 	var ReactPerf = __webpack_require__(38);
 	
-	var containsNode = __webpack_require__(106);
+	var containsNode = __webpack_require__(108);
 	var deprecated = __webpack_require__(43);
-	var getReactRootElementInContainer = __webpack_require__(107);
+	var getReactRootElementInContainer = __webpack_require__(109);
 	var instantiateReactComponent = __webpack_require__(74);
 	var invariant = __webpack_require__(53);
 	var shouldUpdateReactComponent = __webpack_require__(77);
@@ -7785,9 +7785,9 @@
 	"use strict";
 	
 	var ReactComponent = __webpack_require__(25);
-	var ReactMultiChildUpdateTypes = __webpack_require__(108);
+	var ReactMultiChildUpdateTypes = __webpack_require__(106);
 	
-	var flattenChildren = __webpack_require__(109);
+	var flattenChildren = __webpack_require__(107);
 	var instantiateReactComponent = __webpack_require__(74);
 	var shouldUpdateReactComponent = __webpack_require__(77);
 	
@@ -14253,7 +14253,7 @@
 	var ReactPerf = __webpack_require__(38);
 	var ReactReconcileTransaction = __webpack_require__(135);
 	
-	var getReactRootElementInContainer = __webpack_require__(107);
+	var getReactRootElementInContainer = __webpack_require__(109);
 	var invariant = __webpack_require__(53);
 	var setInnerHTML = __webpack_require__(136);
 	
@@ -16278,93 +16278,6 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule containsNode
-	 * @typechecks
-	 */
-	
-	var isTextNode = __webpack_require__(151);
-	
-	/*jslint bitwise:true */
-	
-	/**
-	 * Checks if a given DOM node contains or is another DOM node.
-	 *
-	 * @param {?DOMNode} outerNode Outer DOM node.
-	 * @param {?DOMNode} innerNode Inner DOM node.
-	 * @return {boolean} True if `outerNode` contains or is `innerNode`.
-	 */
-	function containsNode(outerNode, innerNode) {
-	  if (!outerNode || !innerNode) {
-	    return false;
-	  } else if (outerNode === innerNode) {
-	    return true;
-	  } else if (isTextNode(outerNode)) {
-	    return false;
-	  } else if (isTextNode(innerNode)) {
-	    return containsNode(outerNode, innerNode.parentNode);
-	  } else if (outerNode.contains) {
-	    return outerNode.contains(innerNode);
-	  } else if (outerNode.compareDocumentPosition) {
-	    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
-	  } else {
-	    return false;
-	  }
-	}
-	
-	module.exports = containsNode;
-
-
-/***/ },
-/* 107 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule getReactRootElementInContainer
-	 */
-	
-	"use strict";
-	
-	var DOC_NODE_TYPE = 9;
-	
-	/**
-	 * @param {DOMElement|DOMDocument} container DOM element that may contain
-	 *                                           a React component
-	 * @return {?*} DOM element that may have the reactRoot ID, or null.
-	 */
-	function getReactRootElementInContainer(container) {
-	  if (!container) {
-	    return null;
-	  }
-	
-	  if (container.nodeType === DOC_NODE_TYPE) {
-	    return container.documentElement;
-	  } else {
-	    return container.firstChild;
-	  }
-	}
-	
-	module.exports = getReactRootElementInContainer;
-
-
-/***/ },
-/* 108 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
 	 * @providesModule ReactMultiChildUpdateTypes
 	 */
 	
@@ -16391,7 +16304,7 @@
 
 
 /***/ },
-/* 109 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -16461,6 +16374,93 @@
 	module.exports = flattenChildren;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
+
+/***/ },
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule containsNode
+	 * @typechecks
+	 */
+	
+	var isTextNode = __webpack_require__(151);
+	
+	/*jslint bitwise:true */
+	
+	/**
+	 * Checks if a given DOM node contains or is another DOM node.
+	 *
+	 * @param {?DOMNode} outerNode Outer DOM node.
+	 * @param {?DOMNode} innerNode Inner DOM node.
+	 * @return {boolean} True if `outerNode` contains or is `innerNode`.
+	 */
+	function containsNode(outerNode, innerNode) {
+	  if (!outerNode || !innerNode) {
+	    return false;
+	  } else if (outerNode === innerNode) {
+	    return true;
+	  } else if (isTextNode(outerNode)) {
+	    return false;
+	  } else if (isTextNode(innerNode)) {
+	    return containsNode(outerNode, innerNode.parentNode);
+	  } else if (outerNode.contains) {
+	    return outerNode.contains(innerNode);
+	  } else if (outerNode.compareDocumentPosition) {
+	    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
+	  } else {
+	    return false;
+	  }
+	}
+	
+	module.exports = containsNode;
+
+
+/***/ },
+/* 109 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule getReactRootElementInContainer
+	 */
+	
+	"use strict";
+	
+	var DOC_NODE_TYPE = 9;
+	
+	/**
+	 * @param {DOMElement|DOMDocument} container DOM element that may contain
+	 *                                           a React component
+	 * @return {?*} DOM element that may have the reactRoot ID, or null.
+	 */
+	function getReactRootElementInContainer(container) {
+	  if (!container) {
+	    return null;
+	  }
+	
+	  if (container.nodeType === DOC_NODE_TYPE) {
+	    return container.documentElement;
+	  } else {
+	    return container.firstChild;
+	  }
+	}
+	
+	module.exports = getReactRootElementInContainer;
+
 
 /***/ },
 /* 110 */
@@ -17947,7 +17947,7 @@
 	
 	var ReactDOMSelection = __webpack_require__(156);
 	
-	var containsNode = __webpack_require__(106);
+	var containsNode = __webpack_require__(108);
 	var focusNode = __webpack_require__(157);
 	var getActiveElement = __webpack_require__(142);
 	
@@ -20092,7 +20092,7 @@
 	"use strict";
 	
 	var Danger = __webpack_require__(163);
-	var ReactMultiChildUpdateTypes = __webpack_require__(108);
+	var ReactMultiChildUpdateTypes = __webpack_require__(106);
 	
 	var getTextContentAccessor = __webpack_require__(132);
 	var invariant = __webpack_require__(53);
