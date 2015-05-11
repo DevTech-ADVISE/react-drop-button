@@ -6,14 +6,6 @@ var DropBoxContent = DropButton.DropBoxContent;
 React.render(
 	<div>
 
-		<div className="bottom-illustration">
-			<DropButton label="hihi_bottom" layoutMode={DropButton.ALIGN_CONTENT_NE}>
-				<DropTrigger ><div className="chevron">{" >"}</div> Hello from Below</DropTrigger>
-				<DropBoxContent>
-					When content is placed at the bottom of the page it would be nice to sense with Javascript.  This .rdd-drop-box has a min-width of 210px.
-				</DropBoxContent>
-			</DropButton>
-		</div>
 
 		<div className="right-illustration">
 			<DropButton label="hihi_right" layoutMode={DropButton.ALIGN_CONTENT_SW}>
