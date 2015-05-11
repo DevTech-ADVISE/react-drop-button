@@ -34,18 +34,56 @@
           <h1>
 <a id="react-drop-button" class="anchor" href="#react-drop-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-drop-button</h1>
 
-<p>Basic "drop button" functionality to show/hide content on button click. Hides on "click away" as well.
-abcd</p>
+<p>A "drop button" to show/hide content on button click. Hides on "click away" as well. You can add custom content to the header(DropBoxTrigger) and the content panel(DropBoxContent). </p>
 
-<h2>
-<a id="development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h2>
+<pre><code>var React = require('react/addons');
+var DropButton = require('./lib/react-drop-button.jsx');
+var DropTrigger = DropButton.DropTrigger;
+var DropBoxContent = DropButton.DropBoxContent;
 
-<ul>
-<li>Development server <code>npm run dev</code>.</li>
-<li>Continuously run tests on file changes <code>npm run watch-test</code>;</li>
-<li>Run tests: <code>npm test</code>;</li>
-<li>Build <code>npm run build</code>;</li>
-</ul>
+React.render(
+    &lt;div&gt;
+
+        &lt;div className="bottom-illustration"&gt;
+            &lt;DropButton label="hihi_bottom" layoutMode={DropButton.ALIGN_CONTENT_NE}&gt;
+                &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{" &gt;"}&lt;/div&gt; Hello from Below&lt;/DropTrigger&gt;
+                &lt;DropBoxContent&gt;
+                    When content is placed at the bottom of the page it would be nice to sense with Javascript.  This .rdd-drop-box has a min-width of 210px.
+                &lt;/DropBoxContent&gt;
+            &lt;/DropButton&gt;
+        &lt;/div&gt;
+
+        &lt;div className="right-illustration"&gt;
+            &lt;DropButton label="hihi_right" layoutMode={DropButton.ALIGN_CONTENT_SW}&gt;
+                &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{"&lt; "}&lt;/div&gt; HI&lt;/DropTrigger&gt;
+                &lt;DropBoxContent&gt;
+                    When content is on the edge of the page it would be nice to sense with Javascript.
+                &lt;/DropBoxContent&gt;
+            &lt;/DropButton&gt;
+        &lt;/div&gt;
+
+        &lt;div className="bottomright-illustration"&gt;
+            &lt;DropButton label="hihi_right" layoutMode={DropButton.ALIGN_CONTENT_NW}&gt;
+                &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{"&lt; "}&lt;/div&gt; HI&lt;/DropTrigger&gt;
+                &lt;DropBoxContent&gt;
+                    When content is on the edge of the page it would be nice to sense with Javascript.
+                &lt;/DropBoxContent&gt;
+            &lt;/DropButton&gt;
+        &lt;/div&gt;
+
+        &lt;DropButton label="hihi"&gt;
+            &lt;DropTrigger &gt;&lt;div className="chevron"&gt;{" &gt;"}&lt;/div&gt; Custom&lt;span className="bold-text"&gt; button content&lt;/span&gt;&lt;/DropTrigger&gt;
+            &lt;DropBoxContent&gt;
+                Custom drop down content with a 160px min-width
+                &lt;ul&gt;
+                    &lt;li&gt;whatev1&lt;/li&gt;
+                    &lt;li&gt;whatev2&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/DropBoxContent&gt;
+        &lt;/DropButton&gt;
+    &lt;/div&gt;
+    , document.getElementById('main'));
+</code></pre>
         </section>
 
         <footer>
