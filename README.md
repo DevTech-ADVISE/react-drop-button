@@ -1,6 +1,6 @@
 # react-drop-button
 
-A "drop button" to show/hide content on button click. Hides on "click away" as well. You can add custom content to the header(DropBoxTrigger) and the content panel(DropBoxContent). [Demo It](http://tehandyb.github.io/react-drop-button/)
+A "drop button" to show/hide content on button click. Hides on "click away" as well. You can add custom content to the header(DropBoxTrigger) and the content panel(DropBoxContent). [Demo It](http://BI.github.io/react-drop-button/)
 
 ##Properties
 ###Optional
