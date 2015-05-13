@@ -28,6 +28,7 @@ $btn-border-darken: darken($btn-border, 4%);
 		background-color: $btn-color;
 		border:1px solid $btn-border;
 		border-radius: 3px;
+		cursor: pointer;
 		padding: .4em;
 		line-height: 1.2em;
 		display:inline-block;
