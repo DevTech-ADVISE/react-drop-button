@@ -26,7 +26,7 @@ var DropBoxContent = React.createClass({
 			</div>
 		);
 	}
-})
+});
 
 var DropButton = React.createClass({
 	statics: {
@@ -39,13 +39,15 @@ var DropButton = React.createClass({
 	},
 	propsTypes: {
 		label: React.PropTypes.string.isRequired,
-		layoutMode: React.PropTypes.string
+		layoutMode: React.PropTypes.string,
+		transitionOn: React.PropTypes.bool
 	},
 	getInitialState: function() {
 		return {open: false};
 	},
 	getDefaultProps: function() {
-		return {layoutMode: ALIGN_CONTENT_SE};
+		return {layoutMode: ALIGN_CONTENT_SE,
+				transitionOn: true};
 	},
 	componentWillMount: function() {
 		//bubble events up to the top
@@ -62,9 +64,6 @@ var DropButton = React.createClass({
 	toggleDropBox: function() {
 		this.setState({open: !this.state.open});
 	},
-	alert1: function() {
-		alert("1");
-	},
 	handleOutsideClick: function(event) {
 		var dropBoxDOM = this.refs.dropBox && this.refs.dropBox.getDOMNode();
 		var buttonDOM = this.refs.button.getDOMNode();
@@ -76,7 +75,7 @@ var DropButton = React.createClass({
 	},
 	render: function() {
 		var dropBoxClassName = 'rdb-drop-box';
-		var dropBox = '', buttonStatus = "closed";
+		var dropBox = '', buttonStatus = "closed", transitionGroup;
 		var dropBoxContent = null;
 		
 		var dropTrigger = null;
@@ -91,16 +90,24 @@ var DropButton = React.createClass({
 			);
 			buttonStatus = "open";
 		}
-
+		if(this.props.transitionOn) {
+			transitionGroup = (
+				<ReactCSSTransitionGroup transitionName="drop-box-transition">
+				{dropBox}
+				</ReactCSSTransitionGroup>
+			);
+		}
+		else
+			transitionGroup = dropBox;
 		return (
 			<div className={"react-drop-button" + " " + this.props.layoutMode}>
 				<div ref={"button"} className={buttonStatus + " rdb-button"} onClick={this.toggleDropBox}>
 					{dropTrigger}
 					
 				</div>
-				<ReactCSSTransitionGroup transitionName="drop-box-transition">
-				{dropBox}
-				</ReactCSSTransitionGroup>
+				
+				{transitionGroup}
+				
 			</div>
 		);
 	}
