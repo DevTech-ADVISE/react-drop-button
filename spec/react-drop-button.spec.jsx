@@ -4,6 +4,20 @@ var ReactDropButton = require('../lib/react-drop-button.jsx');
 var DropTrigger = ReactDropButton.DropTrigger;
 var DropBoxContent = ReactDropButton.DropBoxContent;
 
+//need to dispatch 'click' event manually in phantomjs
+function clickMe(el){
+    var ev = document.createEvent("MouseEvent");
+    ev.initMouseEvent(
+        "click",
+        true /* bubble */, true /* cancelable */,
+        window, null,
+        0, 0, 0, 0, /* coordinates */
+        false, false, false, false, /* modifier keys */
+        0 /*left*/, null
+    );
+    el.dispatchEvent(ev);
+}
+
 describe("ReactDropButton", function() {
   var component, outsideComponent;
 
@@ -54,11 +68,10 @@ describe("ReactDropButton", function() {
 
 	  it("should close an already open drop box when the user clicks outside of the component", function() {
 
-	  	TestUtils.Simulate.click(outsideComponent.getDOMNode());
-	  	//expect(component.getDOMNode().getElementsByClassName("closed rdb-button")[0]).toBeDefined();
+	  	//had to create custom dispatcher to dispatch the 'click' event to the listener
+	  	clickMe(document.getElementsByTagName("body")[0]);
+	  	expect(component.refs.dropBox).toBeUndefined();
 	  });
   });
-
-
   
 });
