@@ -101,10 +101,9 @@ var DropButton = React.createClass({
 			transitionGroup = dropBox;
 		return (
 			<div className={"react-drop-button" + " " + this.props.layoutMode}>
-				<div ref={"button"} className={buttonStatus + " rdb-button"} onClick={this.toggleDropBox}>
+				<button ref={"button"} className={buttonStatus + " rdb-button"} onClick={this.toggleDropBox}>
 					{dropTrigger}
-					
-				</div>
+				</button>
 				
 				{transitionGroup}
 				
