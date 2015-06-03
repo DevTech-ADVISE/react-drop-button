@@ -33,7 +33,7 @@ $btn-border-darken: darken($btn-border, 4%);
 		line-height: 1.6em;
 		display:inline-block;
 		position: relative;
-		z-index: 100002;
+		z-index: 98;
 		
 		&:hover,
 		&:focus {
@@ -89,7 +89,7 @@ $btn-border-darken: darken($btn-border, 4%);
 		transform-origin: 10px 1px;
 		display: block;
 		position: absolute;
-		z-index: 100001;
+		z-index: 97;
 		padding: .4em;
 		box-shadow: 2px 2px 4px rgba(120,120,120,.25);
 		min-width: 160px;
