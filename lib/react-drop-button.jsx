@@ -48,7 +48,8 @@ var DropButton = React.createClass({
 	},
 	getDefaultProps: function() {
 		return {layoutMode: ALIGN_CONTENT_SE,
-				transitionOn: true};
+				transitionOn: true,
+				onOpen: function(){}};
 	},
 	componentWillMount: function() {
 		//bubble events up to the top
