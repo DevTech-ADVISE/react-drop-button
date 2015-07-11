@@ -37,7 +37,7 @@ var DropButton = React.createClass({
 		ALIGN_CONTENT_SW: ALIGN_CONTENT_SW,
 		ALIGN_CONTENT_NW: ALIGN_CONTENT_NW
 	},
-	propsTypes: {
+	propTypes: {
 		label: React.PropTypes.string.isRequired,
 		layoutMode: React.PropTypes.string,
 		transitionOn: React.PropTypes.bool
