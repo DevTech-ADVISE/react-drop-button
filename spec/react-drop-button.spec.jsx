@@ -19,11 +19,17 @@ function clickMe(el){
 }
 
 describe("ReactDropButton", function() {
-  var component, outsideComponent;
+  var component, outsideComponent, hooks;
 
   beforeEach(function() {
+    hooks = {
+      handleOpen: function(){
+        return true;
+      }
+    };
+    spyOn(hooks, "handleOpen");
     component = TestUtils.renderIntoDocument(
-		<ReactDropButton transitionOn={false}>
+		<ReactDropButton transitionOn={false} onOpen={hooks.handleOpen}>
 			<DropTrigger>Open menu</DropTrigger>
 			<DropBoxContent>
 				Menu content here.
@@ -56,6 +62,7 @@ describe("ReactDropButton", function() {
 			
 	  	expect(component.getDOMNode().getElementsByClassName("open rdb-button")[0]).toBeDefined();
 	  	expect(component.refs.dropBox).toBeDefined();
+      expect(hooks.handleOpen.calls.count()).toEqual(1);
 	  });
 
 	  it("should close an already open drop box when the drop trigger is clicked", function() {
@@ -63,6 +70,7 @@ describe("ReactDropButton", function() {
 	  	//close it
 	  	TestUtils.Simulate.click(component.refs.button.getDOMNode());
 	  	expect(component.refs.dropBox).toBeUndefined();
+      expect(hooks.handleOpen.calls.count()).toEqual(1);
 
 	  });
 
@@ -71,6 +79,7 @@ describe("ReactDropButton", function() {
 	  	//had to create custom dispatcher to dispatch the 'click' event to the listener
 	  	clickMe(document.getElementsByTagName("body")[0]);
 	  	expect(component.refs.dropBox).toBeUndefined();
+      expect(hooks.handleOpen.calls.count()).toEqual(1);
 	  });
   });
   
