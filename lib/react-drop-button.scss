@@ -85,8 +85,12 @@ $btn-border-darken: darken($btn-border, 4%);
 		border: 1px solid #ccc;
 		border-radius: 1px 1px 3px 3px;
 		background: #F5F5F5;
+		-webkit-transform: scale(1);
 		transform: scale(1);
+		-webkit-transform-origin: 10px 1px;
 		transform-origin: 10px 1px;
+		-webkit-transition: -webkit-transform 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+		transition: transform .2s cubic-bezier(.55, 0, .1, 1);
 		display: block;
 		position: absolute;
 		z-index: 97;
@@ -97,7 +101,6 @@ $btn-border-darken: darken($btn-border, 4%);
 
 	.drop-box-transition-enter {
 		transform: scale(0);
-		transition: transform .2s cubic-bezier(.55, 0, .1, 1);
 
 		&.drop-box-transition-enter-active {
 			transform: scale(1.01);
@@ -106,7 +109,6 @@ $btn-border-darken: darken($btn-border, 4%);
 
 	.drop-box-transition-leave {
 		transform: scale(1);
-		transition: transform .2s cubic-bezier(.55, 0, .1, 1);
 
 		&.drop-box-transition-leave-active {
 			transform: scale(0);
