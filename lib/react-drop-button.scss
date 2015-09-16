@@ -100,17 +100,21 @@ $btn-border-darken: darken($btn-border, 4%);
 	}
 
 	.drop-box-transition-enter {
+		-webkit-transform: scale(0);
 		transform: scale(0);
 
 		&.drop-box-transition-enter-active {
+			-webkit-transform: scale(1.01);
 			transform: scale(1.01);
 		}
 	}
 
 	.drop-box-transition-leave {
+		-webkit-transform: scale(1);
 		transform: scale(1);
 
 		&.drop-box-transition-leave-active {
+			-webkit-transform: scale(0);
 			transform: scale(0);
 		}
 	}
