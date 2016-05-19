@@ -1,5 +1,5 @@
-var React = require("react/addons");
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var React = require("react");
+var ReactCSSTransitionGroup = require("react-addons-css-transition-group");
 
 var ALIGN_CONTENT_SE = "";
 var ALIGN_CONTENT_NE = "align-content-ne";
@@ -65,8 +65,8 @@ var DropButton = React.createClass({
 		this.setState({open: !this.state.open});
 	},
 	handleOutsideClick: function(event) {
-		var dropBoxDOM = this.refs.dropBox && this.refs.dropBox.getDOMNode();
-		var buttonDOM = this.refs.button.getDOMNode();
+		var dropBoxDOM = this.refs.dropBox && this.refs.dropBox;
+		var buttonDOM = this.refs.button;
 		//if the click was within the dropdown box panel dont close it
 		if( (dropBoxDOM && dropBoxDOM.contains(event.target)) || (buttonDOM && buttonDOM.contains(event.target)) || !this.state.open)
 			return;
@@ -92,7 +92,7 @@ var DropButton = React.createClass({
 		}
 		if(this.props.transitionOn) {
 			transitionGroup = (
-				<ReactCSSTransitionGroup transitionName="drop-box-transition">
+				<ReactCSSTransitionGroup transitionName="drop-box-transition" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
 				{dropBox}
 				</ReactCSSTransitionGroup>
 			);
