@@ -22,7 +22,7 @@ module.exports = {
   entry: './src/react-drop-button.js',
 
   output: {
-    library: 'ReactPillSelector',
+    library: 'ReactDropButton',
     libraryTarget: 'umd',
     path: 'dist',
     filename: 'react-drop-button.js',

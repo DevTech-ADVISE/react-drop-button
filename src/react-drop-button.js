@@ -37,9 +37,10 @@ var DropButton = React.createClass({
 		ALIGN_CONTENT_SW: ALIGN_CONTENT_SW,
 		ALIGN_CONTENT_NW: ALIGN_CONTENT_NW
 	},
-	propsTypes: {
+	propTypes: {
 		label: React.PropTypes.string.isRequired,
 		layoutMode: React.PropTypes.string,
+		onOpen: React.PropTypes.func,
 		transitionOn: React.PropTypes.bool
 	},
 	getInitialState: function() {
@@ -47,7 +48,8 @@ var DropButton = React.createClass({
 	},
 	getDefaultProps: function() {
 		return {layoutMode: ALIGN_CONTENT_SE,
-				transitionOn: true};
+				transitionOn: true,
+				onOpen: function(){}};
 	},
 	componentWillMount: function() {
 		//bubble events up to the top
@@ -56,6 +58,11 @@ var DropButton = React.createClass({
 	componentWillUnmount: function() {
 		//remove the listener when the component isn't mounted to a DOM node
 		document.body.removeEventListener('click', this.handleOutsideClick);
+	},
+	componentDidUpdate: function(p, oldState) {
+		if(this.state.open && !oldState.open) {
+			this.props.onOpen();
+		}
 	},
 	getChildElementByType: function(type) {
 		var children = this.props.children;
