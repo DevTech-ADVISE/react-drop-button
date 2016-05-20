@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var DropButton = require('./lib/react-drop-button.jsx');
+var DropButton = require('./src/react-drop-button');
 var DropTrigger = DropButton.DropTrigger;
 var DropBoxContent = DropButton.DropBoxContent;
 
@@ -46,4 +46,3 @@ ReactDOM.render(
 		</DropButton>
 	</div>
 	, document.getElementById('main'));
-
