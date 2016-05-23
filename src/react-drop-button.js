@@ -1,17 +1,17 @@
-var React = require("react/addons");
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var React = require('react');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
-var ALIGN_CONTENT_SE = "";
-var ALIGN_CONTENT_NE = "align-content-ne";
-var ALIGN_CONTENT_SW = "align-content-sw";
-var ALIGN_CONTENT_NW = "align-content-nw";
+var ALIGN_CONTENT_SE = '';
+var ALIGN_CONTENT_NE = 'align-content-ne';
+var ALIGN_CONTENT_SW = 'align-content-sw';
+var ALIGN_CONTENT_NW = 'align-content-nw';
 
-require("./react-drop-button.scss");
+require('./react-drop-button.scss');
 
 var DropTrigger = React.createClass({
 	render: function() {
 		return (
-			<div className="drop-trigger">
+			<div className='drop-trigger'>
 				{this.props.children}
 			</div>
 		);
@@ -21,7 +21,7 @@ var DropTrigger = React.createClass({
 var DropBoxContent = React.createClass({
 	render: function() {
 		return (
-			<div className="drop-box-content">
+			<div className='drop-box-content'>
 				{this.props.children}
 			</div>
 		);
@@ -53,11 +53,11 @@ var DropButton = React.createClass({
 	},
 	componentWillMount: function() {
 		//bubble events up to the top
-		document.body.addEventListener("click", this.handleOutsideClick, false);
+		document.body.addEventListener('click', this.handleOutsideClick, false);
 	},
 	componentWillUnmount: function() {
 		//remove the listener when the component isn't mounted to a DOM node
-		document.body.removeEventListener("click", this.handleOutsideClick);
+		document.body.removeEventListener('click', this.handleOutsideClick);
 	},
 	componentDidUpdate: function(p, oldState) {
 		if(this.state.open && !oldState.open) {
@@ -72,8 +72,8 @@ var DropButton = React.createClass({
 		this.setState({open: !this.state.open});
 	},
 	handleOutsideClick: function(event) {
-		var dropBoxDOM = this.refs.dropBox && this.refs.dropBox.getDOMNode();
-		var buttonDOM = this.refs.button.getDOMNode();
+		var dropBoxDOM = this.refs.dropBox && this.refs.dropBox;
+		var buttonDOM = this.refs.button;
 		//if the click was within the dropdown box panel dont close it
 		if( (dropBoxDOM && dropBoxDOM.contains(event.target)) || (buttonDOM && buttonDOM.contains(event.target)) || !this.state.open)
 			return;
@@ -82,24 +82,24 @@ var DropButton = React.createClass({
 	},
 	render: function() {
 		var dropBoxClassName = 'rdb-drop-box';
-		var dropBox = '', buttonStatus = "closed", transitionGroup;
+		var dropBox = '', buttonStatus = 'closed', transitionGroup;
 		var dropBoxContent = null;
-		
+
 		var dropTrigger = null;
-		dropBoxContent = this.getChildElementByType("DropBoxContent");
-		dropTrigger = this.getChildElementByType("DropTrigger");
+		dropBoxContent = this.getChildElementByType('DropBoxContent');
+		dropTrigger = this.getChildElementByType('DropTrigger');
 
 		if(this.state.open) {
 			dropBox = (
-				<div ref={"dropBox"} className={dropBoxClassName}  key="drop-box">
+				<div ref='dropBox' className={dropBoxClassName}  key='drop-box'>
 					{dropBoxContent}
 				</div>
 			);
-			buttonStatus = "open";
+			buttonStatus = 'open';
 		}
 		if(this.props.transitionOn) {
 			transitionGroup = (
-				<ReactCSSTransitionGroup transitionName="drop-box-transition">
+				<ReactCSSTransitionGroup transitionName='drop-box-transition' transitionEnterTimeout={300} transitionLeaveTimeout={300}>
 				{dropBox}
 				</ReactCSSTransitionGroup>
 			);
@@ -107,13 +107,13 @@ var DropButton = React.createClass({
 		else
 			transitionGroup = dropBox;
 		return (
-			<div className={"react-drop-button" + " " + this.props.layoutMode}>
-				<button ref={"button"} className={buttonStatus + " rdb-button"} onClick={this.toggleDropBox}>
+			<div className={'react-drop-button' + ' ' + this.props.layoutMode}>
+				<button ref='button' className={buttonStatus + ' rdb-button'} onClick={this.toggleDropBox}>
 					{dropTrigger}
 				</button>
-				
+
 				{transitionGroup}
-				
+
 			</div>
 		);
 	}

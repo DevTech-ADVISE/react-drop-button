@@ -1,9 +1,10 @@
-var React = require('react/addons');
-var DropButton = require('./lib/react-drop-button.jsx');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var DropButton = require('./src/react-drop-button');
 var DropTrigger = DropButton.DropTrigger;
 var DropBoxContent = DropButton.DropBoxContent;
 
-React.render(
+ReactDOM.render(
 	<div>
 
 		<div className="bottom-illustration">
@@ -45,4 +46,3 @@ React.render(
 		</DropButton>
 	</div>
 	, document.getElementById('main'));
-
