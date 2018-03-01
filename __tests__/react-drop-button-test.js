@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var ReactDropButton = require('../dist/react-drop-button');
 var DropTrigger = ReactDropButton.DropTrigger;
 var DropBoxContent = ReactDropButton.DropBoxContent;
-var TestUtils = require('react-addons-test-utils');
+var TestUtils = require('react-dom/test-utils');
 
 //need to dispatch 'click' event manually in phantomjs
 function clickMe(el){
