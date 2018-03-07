@@ -1,5 +1,7 @@
 var React = require('react');
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
+var ReactCSSTransitionGroup = require('react-transition-group/CSSTransitionGroup');
 
 var ALIGN_CONTENT_SE = '';
 var ALIGN_CONTENT_NE = 'align-content-ne';
@@ -8,7 +10,7 @@ var ALIGN_CONTENT_NW = 'align-content-nw';
 
 require('./react-drop-button.scss');
 
-var DropTrigger = React.createClass({
+var DropTrigger = createReactClass({
 	render: function() {
 		return (
 			<div className='drop-trigger'>
@@ -18,7 +20,7 @@ var DropTrigger = React.createClass({
 	}
 });
 
-var DropBoxContent = React.createClass({
+var DropBoxContent = createReactClass({
 	render: function() {
 		return (
 			<div className='drop-box-content'>
@@ -28,7 +30,7 @@ var DropBoxContent = React.createClass({
 	}
 });
 
-var DropButton = React.createClass({
+var DropButton = createReactClass({
 	statics: {
 		DropTrigger: DropTrigger,
 		DropBoxContent: DropBoxContent,
@@ -38,9 +40,9 @@ var DropButton = React.createClass({
 		ALIGN_CONTENT_NW: ALIGN_CONTENT_NW
 	},
 	propTypes: {
-		layoutMode: React.PropTypes.string,
-		onOpen: React.PropTypes.func,
-		transitionOn: React.PropTypes.bool
+		layoutMode: PropTypes.string,
+		onOpen: PropTypes.func,
+		transitionOn: PropTypes.bool
 	},
 	getInitialState: function() {
 		return {open: false};
